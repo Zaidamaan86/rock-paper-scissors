@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rock Paper Scissors</title>
+
+  <style>
+
+    .grid-main{
+      background-color: aqua;
+      display: grid;  
+      grid-template-columns: 1fr 1fr 1fr;
+      width: 390px;
+      height: 117px;
+      column-gap: 20px;
+    }
+
+    #rock-butt{
+      flex: 1;
+      border-radius: 100%;
+    }
+
+    #paper-butt{
+      flex: 1;
+      border-radius: 100%;
+    }
+
+    #scissors-butt{
+      flex: 1;
+      border-radius: 100%;
+    }
+
+  </style>
+</head>
+<body>
+  <h2>ROCK PAPER SCISSORS</h2>
+  <div class="grid-main">
+
+    <button id="rock-butt" onclick="
+      compmove=random();
+      playermove(compmove,'Rock');">
+      Rock
+    </button>
+
+    <button id="paper-butt" onclick="
+      compmove=random();
+      playermove(compmove,'Paper');">
+      Paper
+    </button>
+    <button id="scissors-butt" onclick="
+      compmove=random();
+      playermove(compmove,'Scissors');">
+      Scissors
+    </button>
+  </div>
+
+  <script>
+    move='';
+    let compmove='';
+    let randommove;
+    result='';
+
+    function random(){
+      randommove= Math.random();
+      console.log(randommove);
+      if(randommove>0 && randommove<=1/3){
+        return 'Rock';
+      }
+      else if(randommove>1/3 && randommove<=2/3){
+        return 'Paper';
+      }
+      else if(randommove>0 && randommove<=1){
+        return 'Scissors';
+      }
+    }
+
+    function playermove(compmove,move){
+      if(move===compmove){
+        result='The Game is Tie!';
+        alert(`Your Move: ${move}\n Computer Move: ${compmove}\n ${result}`)
+      }
+      else if(move==='Rock' && compmove!=='Paper'){
+        result='You Won the Game';
+        alert(`Your Move: ${move}\n Computer Move: ${compmove}\n ${result}`)
+      }
+      else if(move==='Paper' && compmove!=='Scissors'){
+        result='You Won the Game';
+        alert(`Your Move: ${move}\n Computer Move: ${compmove}\n ${result}`)
+      }
+      else if(move==='Scissors' && compmove!=='Rock'){
+        result='You Won the Game';
+        alert(`Your Move: ${move}\n Computer Move: ${compmove}\n ${result}`)
+      }
+      else{
+        result='You lost the Game';
+        alert(`Your Move: ${move}\n Computer Move: ${compmove}\n ${result}`)
+      }
+    }
+  </script>
+ 
+</body>
+</html>
